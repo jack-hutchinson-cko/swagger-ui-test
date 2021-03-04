@@ -40,8 +40,9 @@ const App = () => {
   const [organizationConfig, setOrganizationConfig] = useState(data.orgData);
 
   useEffect(() => {
-    setDefinitionLink(data.orgData.sources[window.location.pathname.slice(1)].link);
-
+    if(window.location.pathname !== '/') {
+      setDefinitionLink(data.orgData.sources[window.location.pathname.slice(1)].link);
+    }
     SwaggerUI({
       domNode: document.getElementById("api-data"),
       url: definitionLink
